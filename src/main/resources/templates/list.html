@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="u:${page.list}">
+    <span th:text="${u.id}" scope="row">id</span>
+    <span th:text="${u.username}">name</span>
+</div>
+<div>
+    <a th:href="@{/user/listall(start=1)}">[首页]</a>
+    <a th:href="@{/user/listall(start=${page.pageNum-1})}">[上一页]</a>
+    <a th:href="@{/user/listall(start=${page.pageNum+1})}">[下一页]</a>
+    <a th:href="@{/user/listall(satrt=${page.pages})}">[末页]</a>
+    <div>
+        当前页/总页数：
+        <a th:href="@{/user/listall(start=${page.pageNum})}" th:text="${page.pageNum}"></a>
+        /
+        <a th:href="@{/user/listall(start=${page.pageNum})}" th:text="${page.pages}"></a>
+    </div>
+</div>
+</body>
+</html>
